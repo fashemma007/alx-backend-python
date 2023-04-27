@@ -6,7 +6,7 @@
 
 ---
 
-<h2 style="text-align: center;">Collaborative Author(s)</h2>
+## Author(s)
 
 [**Emmanuel Fasogba**](https://www.linkedin.com/in/emmanuelofasogba/)
 - GitHub - [fashemma007](https://github.com/fashemma007)
