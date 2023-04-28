@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """takes 2 floats a and b as arguments and returns their sum as a float"""
 
 

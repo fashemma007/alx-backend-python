@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """The types of the elements of the input are not know"""
 
 from typing import Any, Sequence, Union

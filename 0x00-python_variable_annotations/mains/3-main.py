@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """Module Docs"""
 to_str = __import__('3-to_str').to_str
 
