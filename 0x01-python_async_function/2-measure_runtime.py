@@ -15,7 +15,8 @@ def measure_time(n: int, max_delay: int) -> float:
     max_delay: int: Set the maximum delay for each task
     return: The average time of a single await call
     """
-    s_time = time.perf_counter()
+    start = time.perf_counter()  # start time
     asyncio.run(wait_n(n, max_delay))
-    e_time = time.perf_counter()
-    return (e_time - s_time) / n
+    end = time.perf_counter()  # end time
+    runtime = end - start  # function runtime
+    return runtime / n
