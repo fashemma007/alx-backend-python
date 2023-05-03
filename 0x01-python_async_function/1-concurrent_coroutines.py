@@ -17,7 +17,11 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     max_delay: int: Set the maximum delay for each task
     return: A list of n floats
     """
-    f_time = [wait_random(max_delay) for _ in range(n)]
-    f_time = asyncio.as_completed(f_time)
-    lag = [await future for future in f_time]
-    return lag
+    # call the wait_random functn n times
+    awaited_result = [wait_random(max_delay) for _ in range(n)]
+    # print(f"Your long awaited_result\n{awaited_result}")
+    # use as_completed to return completed funcs as they complete
+    awaited_result = asyncio.as_completed(awaited_result)
+    # get the results from each promise/future
+    result = [await future for future in awaited_result]
+    return result
