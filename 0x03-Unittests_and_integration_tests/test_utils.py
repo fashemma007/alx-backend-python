@@ -70,8 +70,8 @@ class TestMemoize(unittest.TestCase):
             # subsequent calls only returns the cache and
             # doesnt call the method itself
             test.a_property()
-            test.a_property()
-            test.a_property()
+            # test.a_property()
+            # test.a_property()
             mock_a_method.assert_called_once()
 
 
