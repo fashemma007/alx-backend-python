@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """Parameterize a unit test"""
 import unittest
-from unittest.mock import patch
+from unittest.mock import PropertyMock, patch
 from parameterized import parameterized
 from client import GithubOrgClient
 
 
 class TestGithubOrgClient(unittest.TestCase):
     """Test that GithubOrgClient.org returns the correct value"""
-
     @parameterized.expand([
         ("google", {'name': 'google'}),
         ("abc", {"name": 'abc'}),
@@ -21,6 +20,19 @@ class TestGithubOrgClient(unittest.TestCase):
         response = tester.org
         self.assertEqual(response, result)
         mock_get_json.assert_called_once()
+
+    def test_public_repos_url(self):
+        """mock _public_repos_url"""
+        with patch.object(
+            GithubOrgClient, 'org', new_callable=PropertyMock
+        ) as mock_org:
+            # create a default return value
+            mock_org.return_value = {'repos_url': 'emiwest007'}
+            test_org = GithubOrgClient('emiwest')
+            test_repo_url = test_org._public_repos_url
+            self.assertEqual(
+                test_repo_url, mock_org.return_value.get('repos_url'))
+            mock_org.assert_called_once()
 
 
 if __name__ == "__main__":
