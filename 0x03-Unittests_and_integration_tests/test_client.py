@@ -39,7 +39,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
     @patch('client.get_json', return_value=[{'name': 'ALX'},
                                             {'name': 'Emmanuel'},
-                                            {'name': 'De-light'}])
+                                            {'name': 'OK'}])
     def test_public_repos(self, mock_get_json):
         """Implementations to unit-test GithubOrgClient.public_repos"""
         repo_list = ['truth', 'ruby-openid-apps-discovery', 'autoparse']
@@ -52,7 +52,7 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_pub.assert_called_once()
             mock_get_json.assert_called_once()
             for idx in range(3):
-                print(mock_get_json.return_value[idx]['name'])
+                # print(mock_get_json.return_value[idx]['name'])
                 self.assertIn(
                     mock_get_json.return_value[idx]['name'], tester_repo)
 
